@@ -1,0 +1,15 @@
+<h1>Posts</h1>
+
+<p>Logged in as <strong><%= current_user.username %></strong><br>
+This blog has <%= Post.public_count %> articles and counting!
+</p>
+<p><%= link_to "New Post", new_post_path, class: "btn btn-success" %></p>
+
+<% @posts.each do |post| %>
+  <h2><%= link_to post.title, post %></h2>
+  <p><%= post.text %></p>
+  <p>By: <%= post.user.username %></p>
+  <p>Comments: <%= post.comments.count %></p>
+  <p>Last updated: <%= post.updated_at %></p>
+<% end %>
+
